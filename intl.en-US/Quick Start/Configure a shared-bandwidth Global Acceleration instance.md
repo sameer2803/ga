@@ -1,10 +1,10 @@
 # Configure a shared-bandwidth Global Acceleration instance {#concept_qgs_tww_5db .concept}
 
-This tutorial guides you to configure a shared-bandwidth Global Acceleration instance to accelerate services deployed on ECS instances of the VPC network. A shared-bandwidth Global Acceleration instance contains only an Internet bandwidth and no public IP. It accelerates the backend services through the added EIPs.
+This tutorial explains how to configure a shared-bandwidth Global Acceleration instance to accelerate services deployed on ECS instances of the VPC network. A shared-bandwidth Global Acceleration instance contains only an Internet bandwidth and no public IP. It accelerates the backend services through the added EIPs.
 
 ## Scenario {#section_udw_2xw_5db .section}
 
-The ECS instance where the application is deployed is located in China \(Beijing\) and is bound with an EIP to provide external service. Service timeout usually occurs when users in the US \(Silicon Valley\) region access the service, therefore the quality and speed of their Internet access is to be improved.
+The ECS instance where the application is deployed is located in China \(Beijing\) and is bound with an EIP to provide external service. Service timeout usually occurs when users in the US \(Silicon Valley\) region access the service. Therefore, the quality and speed of their Internet access needs to be improved.
 
 ## Configuration description {#section_f5h_jxw_5db .section}
 
@@ -26,7 +26,7 @@ To meet the demand for acceleration, a Global Acceleration instance with the fol
 
     The region where the backend service is deployed. Beijing belongs to the service area of Mainland China.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15330079711372_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15343869991372_en-US.png)
 
 
 ## Prerequisites {#section_rzl_nxw_5db .section}
@@ -34,7 +34,7 @@ To meet the demand for acceleration, a Global Acceleration instance with the fol
 -   -   An application is deployed on the ECS instance and a secondary ENI is created for the ECS instance.
 
 
-## Step 1 Create a Global Acceleration instance {#section_scl_pxw_5db .section}
+## Step 1. Create a Global Acceleration instance {#section_scl_pxw_5db .section}
 
 1.  Log on to the [VPC console](https://vpcnext.console.aliyun.com).
 2.  In the left-side navigation pane, click **Global Acceleration**.
@@ -79,7 +79,7 @@ The regions of the backend services that the EIPs are bound to must be the same.
  In this tutorial, select **Mainland China**.
 
  |
-    |**Billing Method**|The Global Acceleration is billed by bandwidth.|
+    |**Billing Method**|Global Acceleration is billed by bandwidth.|
     |**Peak Bandwidth**| Select the peak bandwidth of the Global Acceleration instance. After an instance has been created, you can adjust the peak bandwidth at any time according to your business needs.
 
  In this tutorial, select **10 Mbps**.
@@ -97,14 +97,14 @@ The regions of the backend services that the EIPs are bound to must be the same.
  |
 
 
-## Step 2 Add EIPs {#section_nk1_2wx_5db .section}
+## Step 2. Add EIPs {#section_nk1_2wx_5db .section}
 
-After creating a shared-bandwidth instance, you must add at least one EIP to access the Internet access. After the EIP is added to the instance:
+After creating a shared-bandwidth instance, you must add at least one EIP to accelerate the Internet access. After the EIP is added to the instance:
 
 -   The added EIP shares the bandwidth of the Global Acceleration instance and the original bandwidth of the EIP is disabled.
--   The original billing of the EIP is also disabled. The EIP becomes a public IP and no additional traffic or bandwidth fee is calculated.
+-   The original billing of the EIP is also disabled. The EIP becomes a public IP and no additional traffic or bandwidth fee is charged.
 
-Follow these steps to add an EIP:
+To add an EIP, follow these steps.
 
 1.  On the Global Acceleration page, click **Shared Bandwidth**.
 2.  Click **Add IP Address** in the **Actions** column of the target instance.
@@ -118,11 +118,11 @@ Follow these steps to add an EIP:
         **Note:** The EIP instance and the Global Acceleration instance must be in the same region.
 
 
-## Step 3 Bind backend services {#section_ojb_pbx_5db .section}
+## Step 3. Bind backend services {#section_ojb_pbx_5db .section}
 
-A shared-bandwidth instance accelerates Internet access through EIPs. After adding an EIP, You need to bind the EIP to the backend service that you want to accelerate. Up to 50 EIPs can be bound to a shared-bandwidth Global Acceleration instance.
+A shared-bandwidth instance accelerates Internet access through EIPs. After adding an EIP, you need to bind the EIP to the backend service that you want to accelerate. Up to 50 EIPs can be bound to a shared-bandwidth Global Acceleration instance.
 
-Follow these steps to bind a backend service:
+To bind a backend service, follow these steps.
 
 1.  On the Global Acceleration page, find the target instance and click the added EIP.
 
@@ -130,7 +130,7 @@ Follow these steps to bind a backend service:
 
 2.  On the Global Acceleration IP Addresses page, click the **Bind** option of the target EIP.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12644/15330079716956_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12644/15343870006956_en-US.png)
 
 3.  In the displayed dialog box, configure the backend service according to the following information:
     -   **Region**: Select the region of the backend service. In this tutorial, select **China North 2**.
@@ -140,7 +140,7 @@ Follow these steps to bind a backend service:
         ![](images/1447_en-US.png)
 
 
-## Step 4 Verification {#section_hqp_ndx_5db .section}
+## Step 4. Verification {#section_hqp_ndx_5db .section}
 
 After the backend service is bound, you can ping the EIP of the Global Acceleration instance to verify if the configuration takes effect. You can also ping the public IP of the backend server and the EIP of the Global Acceleration instance respectively to compare the latency and packet loss.
 
