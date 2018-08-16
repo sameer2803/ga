@@ -1,10 +1,10 @@
 # Configure a dedicated-bandwidth Global Acceleration instance {#concept_qgs_tww_5db .concept}
 
-This tutorial guides you to configure a dedicated-bandwidth Global Acceleration instance to accelerate services deployed on the ECS instance of the VPC network. A dedicated-bandwidth Global Acceleration instance provides a dedicated Internet bandwidth and a public IP for accelerating the Internet access for the added backend service.
+This tutorial explains how to configure a dedicated-bandwidth Global Acceleration instance to accelerate services deployed on an ECS instance of a VPC network. A dedicated-bandwidth Global Acceleration instance provides a dedicated Internet bandwidth and a public IP for accelerating the Internet access for the added backend service.
 
 ## Scenario {#section_udw_2xw_5db .section}
 
-The ECS instance where the application is deployed is located in China \(Beijing\) and is bound with an EIP to provide external service. Service timeout usually occurs when users in the US \(Silicon Valley\) region access the service, therefore the quality and speed of their Internet access is to be improved.
+The ECS instance where the application is deployed is located in China \(Beijing\) and is bound to an EIP to provide external service. Service timeout usually occurs when users in the US \(Silicon Valley\) region access the service. Therefore, the quality and speed of their Internet access needs to be improved.
 
 ## Configuration description {#section_f5h_jxw_5db .section}
 
@@ -20,13 +20,13 @@ To meet the demand for acceleration, a Global Acceleration instance with the fol
 
 -   Region \(accelerated region\): US \(Silicon Valley\)
 
-    The region of the Global Acceleration instance to accelerate the Internet access.
+    The region of the Global Acceleration instance, which must be one region within the accelerated area.
 
 -   Service area: Mainland China
 
     The region where the backend service is deployed. Beijing belongs to the service area of Mainland China.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15330078901372_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15343868911372_en-US.png)
 
 
 ## Prerequisites {#section_rzl_nxw_5db .section}
@@ -34,7 +34,7 @@ To meet the demand for acceleration, a Global Acceleration instance with the fol
 -   -   An application is deployed on the ECS instance and a secondary ENI is created for the ECS instance.
 
 
-## Step 1 Create a Global Acceleration instance {#section_scl_pxw_5db .section}
+## Step 1. Create a Global Acceleration instance {#section_scl_pxw_5db .section}
 
 1.  Log on to the [VPC console](https://vpcnext.console.aliyun.com).
 2.  In the left-side navigation pane, click **Global Acceleration**.
@@ -79,7 +79,7 @@ The regions of the backend services that the EIPs are bound to must be the same.
  In this tutorial, select **Mainland China**.
 
  |
-    |**Billing Method**|The Global Acceleration is billed by bandwidth.|
+    |**Billing Method**|Global Acceleration is billed by bandwidth.|
     |**Peak Bandwidth**| Select the peak bandwidth of the Global Acceleration instance. After an instance has been created, you can adjust the peak bandwidth at any time according to your business needs.
 
  In this tutorial, select **10 Mbps**.
@@ -97,14 +97,14 @@ The regions of the backend services that the EIPs are bound to must be the same.
  |
 
 
-## Step 2 Bind a backend service {#section_ojb_pbx_5db .section}
+## Step 2. Bind a backend service {#section_ojb_pbx_5db .section}
 
 After a dedicated-bandwidth instance is created, you need to bind the backend service to be accelerated to the dedicated-bandwidth instance. Follow these steps to bind a backend service:
 
 1.  On the Global Acceleration page, click **Dedicated Bandwidth**.
 2.  Find the target instance and click **Bind Instance**.
 3.  On the Backend Service Instance page, configure the backend service and click **OK**.
-    -   **Backend Service Region**: Select the region of the backend service. The backend service region must belong to selected service area.
+    -   **Backend Service Region**: Select the region of the backend service. The backend service region must belong to the selected service area.
 
         In this tutorial, select **China North 2 \(Beijing\)**.
 
@@ -119,9 +119,9 @@ After a dedicated-bandwidth instance is created, you need to bind the backend se
 
 When the status of the Global Acceleration instance changes to **Allocated**, the binding is successful. After the instance is successfully bound, the system automatically allocates a backend service address to the backend server.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15330078901391_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15343868911391_en-US.png)
 
-## Step 3 Activate the backend service {#section_e2b_xcx_5db .section}
+## Step 3. Activate the backend service {#section_e2b_xcx_5db .section}
 
 After the backend service is bound, you need to add a NIC sub interface to the bound ECS instance. The IP address of the sub interface is the backend service address allocated by the system. After the backend service is bound to the Global Acceleration instance, the acceleration link is always active as long as the sub interface in the backend server is correctly configured.
 
@@ -133,7 +133,7 @@ This tutorial takes the Linux system as an example:
 
     You can also click **Service Activation** to view the backend service address.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15330078901392_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12632/15343868921392_en-US.png)
 
 2.  Run the following command to open the NIC configuration file.
 
@@ -157,7 +157,7 @@ This tutorial takes the Linux system as an example:
     ```
 
 
-## Step 4 Verification {#section_hqp_ndx_5db .section}
+## Step 4. Verification {#section_hqp_ndx_5db .section}
 
 After the backend service is bound, you can ping the EIP of the Global Acceleration instance to verify if the configuration takes effect. You can also ping the public IP of the backend server and the EIP of the Global Acceleration instance respectively to compare the latency and packet loss.
 
