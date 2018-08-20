@@ -1,4 +1,4 @@
-# FQA {#concept_gnr_c4z_5db .concept}
+# FAQ {#concept_gnr_c4z_5db .concept}
 
 ## When do I need to use Global Acceleration? {#section_n34_f4z_5db .section}
 
